@@ -1,0 +1,1 @@
+Quando não encontrar resposta fundamentada na documentação disponível, diga explicitamente: "Não encontrei uma resposta fundamentada na documentação para esta pergunta." Em seguida, sugira ao atendente escalar o chamado ao supervisor da área responsável em até 30 minutos.

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "chunk-001",
+    "content": "Política de devolução: O cliente tem até 7 dias úteis após o recebimento para solicitar a devolução do produto, desde que esteja na embalagem original e sem sinais de uso. Exceção: cargas perigosas (classes 1 a 6 da ANTT) não podem ser devolvidas sob nenhuma circunstância.",
+    "source": "POL-001",
+    "domain": "devolucao",
+    "score": 0.95,
+    "tokens": 82
+  },
+  {
+    "id": "chunk-002",
+    "content": "SLA por tier de atendimento: Gold — resposta em até 2h, resolução em até 8h. Silver — resposta em até 4h, resolução em até 24h. Standard — resposta em até 8h, resolução em até 48h. Não existem outros tiers além de Gold, Silver e Standard.",
+    "source": "SLA-2024",
+    "domain": "sla",
+    "score": 0.92,
+    "tokens": 78
+  },
+  {
+    "id": "chunk-003",
+    "content": "Cálculo de frete especial para cargas acima de 500kg: aplicar multiplicador regional conforme tabela — Sudeste: 1.2x, Sul: 1.3x, Nordeste: 1.5x, Norte: 1.8x, Centro-Oeste: 1.4x. Base de cálculo: peso × tarifa-base × multiplicador regional.",
+    "source": "PROC-042",
+    "domain": "frete",
+    "score": 0.88,
+    "tokens": 75
+  },
+  {
+    "id": "chunk-004",
+    "content": "Cálculo de frete especial para cargas acima de 500kg (versão atualizada): multiplicador regional — Sudeste: 1.3x, Sul: 1.4x, Nordeste: 1.6x, Norte: 2.0x, Centro-Oeste: 1.5x. Vigência: a partir de 01/03/2024.",
+    "source": "PROC-042-v2",
+    "domain": "frete",
+    "score": 0.86,
+    "tokens": 70
+  },
+  {
+    "id": "chunk-005",
+    "content": "Procedimento de escalação ao supervisor: quando o atendente não encontrar resposta na documentação disponível ou quando o cliente solicitar exceção à política vigente, o chamado deve ser escalado ao supervisor da área em até 30 minutos.",
+    "source": "FAQ-Atendimento",
+    "domain": "escalacao",
+    "score": 0.80,
+    "tokens": 65
+  }
+]

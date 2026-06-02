@@ -1,0 +1,1 @@
+Sempre cite o documento-fonte da informação na resposta. Toda afirmação factual deve estar acompanhada da referência ao documento de origem (ex.: "Conforme SLA-2024, ...", "De acordo com POL-001, ..."). Respostas sem citação de fonte são consideradas inválidas e serão bloqueadas.

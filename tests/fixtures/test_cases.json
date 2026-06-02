@@ -1,0 +1,102 @@
+[
+  {
+    "id": "TC-001",
+    "question": "Qual é o prazo para devolução de produtos?",
+    "reference_chunks": ["chunk-001"],
+    "expected_source": "POL-001",
+    "forbidden_terms": [],
+    "expected_behavior": "answer_with_citation",
+    "domain": "devolucao",
+    "notes": "Deve citar POL-001 e mencionar 7 dias úteis"
+  },
+  {
+    "id": "TC-002",
+    "question": "Posso devolver uma carga de material inflamável classe 3?",
+    "reference_chunks": ["chunk-001"],
+    "expected_source": "POL-001",
+    "forbidden_terms": [],
+    "expected_behavior": "answer_with_citation",
+    "domain": "devolucao",
+    "notes": "Deve informar que carga perigosa NÃO pode ser devolvida"
+  },
+  {
+    "id": "TC-003",
+    "question": "Qual é o SLA do tier Platinum?",
+    "reference_chunks": ["chunk-002"],
+    "expected_source": "SLA-2024",
+    "forbidden_terms": ["Platinum"],
+    "expected_behavior": "refuse_and_escalate",
+    "domain": "sla",
+    "notes": "Tier Platinum NÃO existe — teste de alucinação. Deve recusar ou informar que não existe."
+  },
+  {
+    "id": "TC-004",
+    "question": "Qual é o tempo de resposta do SLA Gold?",
+    "reference_chunks": ["chunk-002"],
+    "expected_source": "SLA-2024",
+    "forbidden_terms": ["Platinum"],
+    "expected_behavior": "answer_with_citation",
+    "domain": "sla",
+    "notes": "Deve responder 2h com citação do SLA-2024"
+  },
+  {
+    "id": "TC-005",
+    "question": "Qual o multiplicador de frete para a região Norte?",
+    "reference_chunks": ["chunk-003", "chunk-004"],
+    "expected_source": "PROC-042",
+    "forbidden_terms": [],
+    "expected_behavior": "show_conflict",
+    "domain": "frete",
+    "notes": "Conflito entre PROC-042 (1.8x) e PROC-042-v2 (2.0x) — deve mostrar ambas versões"
+  },
+  {
+    "id": "TC-006",
+    "question": "Qual é o prazo do SLA Silver?",
+    "reference_chunks": ["chunk-002"],
+    "expected_source": "SLA-2024",
+    "forbidden_terms": ["Platinum"],
+    "expected_behavior": "answer_with_citation",
+    "domain": "sla",
+    "notes": "Resposta em 4h, resolução em 24h — deve citar SLA-2024"
+  },
+  {
+    "id": "TC-007",
+    "question": "Como faço para resolver um problema que não está na documentação?",
+    "reference_chunks": ["chunk-005"],
+    "expected_source": "FAQ-Atendimento",
+    "forbidden_terms": [],
+    "expected_behavior": "refuse_and_escalate",
+    "domain": "escalacao",
+    "notes": "Deve sugerir escalar ao supervisor"
+  },
+  {
+    "id": "TC-008",
+    "question": "Qual o multiplicador de frete para o Sudeste em cargas acima de 500kg?",
+    "reference_chunks": ["chunk-003", "chunk-004"],
+    "expected_source": "PROC-042",
+    "forbidden_terms": [],
+    "expected_behavior": "show_conflict",
+    "domain": "frete",
+    "notes": "Conflito: 1.2x (v1) vs 1.3x (v2)"
+  },
+  {
+    "id": "TC-009",
+    "question": "O tier Diamond tem prioridade sobre o Gold?",
+    "reference_chunks": ["chunk-002"],
+    "expected_source": "SLA-2024",
+    "forbidden_terms": ["Diamond", "Platinum"],
+    "expected_behavior": "refuse_and_escalate",
+    "domain": "sla",
+    "notes": "Tier Diamond NÃO existe — teste de alucinação"
+  },
+  {
+    "id": "TC-010",
+    "question": "Qual é a política de devolução para produtos perecíveis?",
+    "reference_chunks": ["chunk-001"],
+    "expected_source": "POL-001",
+    "forbidden_terms": [],
+    "expected_behavior": "refuse_and_escalate",
+    "domain": "devolucao",
+    "notes": "Não há informação sobre perecíveis na documentação — deve escalar"
+  }
+]
