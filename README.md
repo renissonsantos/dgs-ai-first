@@ -13,8 +13,11 @@ Cada cenário da trilha é entregue em uma branch dedicada:
 | Branch | Cenário | Status |
 |--------|---------|--------|
 | `cenario-1` | Fundamentos de IA Generativa, Engenharia de Prompt, Engenharia de Contexto, RAG e MCP | Entregue |
-| `cenario-2` | _a definir_ | Pendente |
+| `cenario-2` | Estruturação do Trabalho — MCP, Recorte de Domínio e SDD, AGENTS.md e Skills | Entregue |
 | `cenario-3` | _a definir_ | Pendente |
+
+> A fase 2 é entregue na branch `cenario-2`, na subpasta [`novatech-assistant/`](novatech-assistant/)
+> (projeto TypeScript/Azure). A fase 1 permanece na raiz.
 
 ## Cenário 1 — Assistente de IA com RAG da NovaTech
 
@@ -32,7 +35,48 @@ Entregáveis do Tech Lead:
 - **Ex. 1.2 — Prompt & context engineering como artefato de arquitetura:** estratégia versionada, anatomia de contexto, harness de teste de prompts e split de enforcement probabilístico vs determinístico. Documento em [`docs/estrategia-prompt-context-engineering.md`](docs/estrategia-prompt-context-engineering.md); código em [`src/`](src/) e [`prompts/`](prompts/); spec em [`specs/001-prompt-context-engineering/`](specs/001-prompt-context-engineering/).
 - **Ex. 1.3 — Revisão crítica de proposta de RAG:** revisão própria vs revisão do Claude, comparação e proposta reescrita. Ver [`docs/revisao-proposta-rag.md`](docs/revisao-proposta-rag.md).
 
+## Cenário 2 — Estruturação do Trabalho (NovaTech Assistant)
+
+Aprovado o projeto, o time estrutura o ambiente e os artefatos que governam o desenvolvimento
+AI First: as conexões dos agentes (MCP), o recorte de domínio (SDD), a *constitution* do projeto
+(AGENTS.md) e as skills reutilizáveis. A fase parte do starter (Anexo D) e é desenvolvida na
+subpasta [`novatech-assistant/`](novatech-assistant/) (projeto TypeScript/Azure Functions).
+
+Entregáveis do Tech Lead (índice em [`novatech-assistant/docs/ENTREGAVEIS-tech-lead-cenario2.md`](novatech-assistant/docs/ENTREGAVEIS-tech-lead-cenario2.md)):
+
+- **Ex. 2.1 — Construção e teste do AGENTS.md:** *constitution* prescritiva com o orçamento de
+  contexto da ADR-0002, testada com agente e iterada v1→v2. Ver
+  [`novatech-assistant/AGENTS.md`](novatech-assistant/AGENTS.md) e
+  [`novatech-assistant/docs/agents-md/`](novatech-assistant/docs/agents-md/).
+- **Ex. 2.2 — Arquitetura de MCP:** servers locais com *least privilege* (filesystem rw +
+  fontes de negócio read-only, git, memory), health check **executável** (4/4) e plano de
+  contingência. Ver [`novatech-assistant/.mcp/`](novatech-assistant/.mcp/),
+  [`novatech-assistant/scripts/mcp-health-check.mjs`](novatech-assistant/scripts/mcp-health-check.mjs)
+  e [`novatech-assistant/docs/mcp/`](novatech-assistant/docs/mcp/).
+- **Ex. 2.3 — Skills técnicas:** skill `azure-functions-endpoint` testada em 3 gerações (query,
+  feedback, health) + teste real com Copilot (escalation). Ver
+  [`novatech-assistant/skills/`](novatech-assistant/skills/) e
+  [`novatech-assistant/docs/skills/`](novatech-assistant/docs/skills/).
+
+Qualidade verificada: `eslint` (no-console), `vitest` 11/11, `tsc` strict (exit 0), health check
+4/4. Auto-avaliação: 3.0 — [`novatech-assistant/docs/auto-avaliacao-tech-lead.md`](novatech-assistant/docs/auto-avaliacao-tech-lead.md).
+
+### Como rodar (Cenário 2)
+
+Requer Node.js 20+.
+
+```bash
+cd novatech-assistant
+npm install
+npm run lint          # eslint (no-console)
+npx tsc -p . --noEmit # type-check strict
+npx vitest run        # 11 testes
+node scripts/mcp-health-check.mjs   # sobe e consulta os MCP servers locais (4/4)
+```
+
 ## Estrutura do repositório
+
+> Na branch `cenario-2`, a raiz contém a fase 1 e a fase 2 vive em `novatech-assistant/`.
 
 ```
 dgs-ai-first/
@@ -47,7 +91,8 @@ dgs-ai-first/
 ├─ src/                      # orquestração, harness de teste e filtros de enforcement (PoC)
 ├─ tests/                    # testes unitários e de integração + fixtures (Anexo B)
 ├─ specs/                    # specs geradas pelo spec-kit
-└─ .specify/memory/constitution.md   # princípios AI-First do projeto
+├─ .specify/memory/constitution.md   # princípios AI-First do projeto
+└─ novatech-assistant/       # Cenário 2 — projeto TS/Azure (AGENTS.md, .mcp, src, skills, tests)
 ```
 
 ## Como rodar a PoC (Ex. 1.2)
