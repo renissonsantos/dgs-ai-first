@@ -1,0 +1,24 @@
+Validação do output do GitHub Copilot — endpoint "escalation"
+Repositório: C:\Pessoal\IA First\novatech-assistant
+Data: 2026-06-27
+
+$ npx eslint src tests
+(sem erros) — exit 0
+  -> nenhum console.* no código gerado (regra no-console respeitada)
+
+$ npx tsc -p . --noEmit
+(sem erros) — exit 0
+
+$ npx vitest run tests/integration/escalation.test.ts
+ ✓ tests/integration/escalation.test.ts (2 tests)
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+
+$ npx vitest run            # suíte completa após adicionar escalation
+ Test Files  4 passed (4)
+      Tests  11 passed (11)   # query 4 + feedback 2 + health 3 + escalation 2
+
+Checagens dirigidas:
+- app.http( aparece SÓ em src/functions/escalation/index.ts  -> OK
+- nenhum process.env / new OpenAIClient / new SearchClient no handler ou store -> OK
+- estrutura de 4 arquivos presente (handler, validator, response-builder, index) -> OK
