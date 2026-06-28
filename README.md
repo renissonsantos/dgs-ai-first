@@ -14,7 +14,7 @@ Cada cenário da trilha é entregue em uma branch dedicada:
 |--------|---------|--------|
 | `cenario-1` | Fundamentos de IA Generativa, Engenharia de Prompt, Engenharia de Contexto, RAG e MCP | Entregue |
 | `cenario-2` | Estruturação do Trabalho — MCP, Recorte de Domínio e SDD, AGENTS.md e Skills | Entregue |
-| `cenario-3` | _a definir_ | Pendente |
+| `cenario-3` | Governança e Validação — Harness Engineering (HITL + Structured Outputs) e Revisão Crítica de Outputs de IA | Entregue |
 
 > A fase 2 é entregue na branch `cenario-2`, na subpasta [`novatech-assistant/`](novatech-assistant/)
 > (projeto TypeScript/Azure). A fase 1 permanece na raiz.
@@ -74,9 +74,30 @@ npx vitest run        # 11 testes
 node scripts/mcp-health-check.mjs   # sobe e consulta os MCP servers locais (4/4)
 ```
 
+## Cenário 3 — Governança e Validação
+
+Antes do go-live, o time torna o assistente confiável e governável: reforça o **harness** (com
+**structured outputs** e **human-in-the-loop**) e aplica **revisão crítica** ao que foi gerado por
+IA. Continua no projeto [`novatech-assistant/`](novatech-assistant/), reusando ADRs (cenário 1),
+AGENTS.md, skills e guardrails (cenário 2).
+
+Entregáveis do Tech Lead (índice em [`novatech-assistant/docs/ENTREGAVEIS-tech-lead-cenario3.md`](novatech-assistant/docs/ENTREGAVEIS-tech-lead-cenario3.md)):
+
+- **Ex. 3.1 — Design do harness:** as 5 camadas (orchestration, verification, context & memory,
+  guardrails, observability) com o que tem / falta / como fechar; Context & memory ancorado na
+  ADR-0002; Guardrails com structured outputs + ponto de HITL. Inclui a função de verificação de
+  fonte ([`src/services/source-verifier.ts`](novatech-assistant/src/services/source-verifier.ts)).
+  Design em [`novatech-assistant/docs/harness/harness-design.md`](novatech-assistant/docs/harness/harness-design.md).
+- **Ex. 3.2 — Revisão crítica da arquitetura gerada por IA:** avaliação própria → co-review com
+  Claude → priorização em 2 semanas, identificando as armadilhas (skills sem refino; system prompt
+  sem changelog). Em [`novatech-assistant/docs/revisao-arquitetura-ia.md`](novatech-assistant/docs/revisao-arquitetura-ia.md).
+
+Qualidade: `vitest` 17/17, `tsc` strict (exit 0), `eslint` (no-console). Auto-avaliação: 2.9 —
+[`novatech-assistant/docs/auto-avaliacao-tech-lead-cenario3.md`](novatech-assistant/docs/auto-avaliacao-tech-lead-cenario3.md).
+
 ## Estrutura do repositório
 
-> Na branch `cenario-2`, a raiz contém a fase 1 e a fase 2 vive em `novatech-assistant/`.
+> Na branch `cenario-2`/`cenario-3`, a raiz contém a fase 1 e as fases 2–3 vivem em `novatech-assistant/`.
 
 ```
 dgs-ai-first/
