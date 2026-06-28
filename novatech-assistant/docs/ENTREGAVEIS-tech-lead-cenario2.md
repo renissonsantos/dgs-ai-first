@@ -1,7 +1,7 @@
 # Entregáveis — Tech Lead, Cenário 2 (Estruturação do Trabalho)
 
-Repositório de trabalho da Fase 2 (starter Anexo D). Decisões rastreiam as ADRs do Cenário 1
-(`../../dgs-ai-first/docs/adr/`).
+Projeto da Fase 2 (baseado no starter Anexo D), em `novatech-assistant/`. Decisões rastreiam as
+ADRs do Cenário 1 ([`../../docs/adr/`](../../docs/adr/)).
 
 ## 2.1 — Construção e teste do AGENTS.md
 | Entregável | Caminho |
